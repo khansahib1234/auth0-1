@@ -73,7 +73,7 @@ export class AuthService {
     checkAuth$.subscribe();
   }
 
-  login(redirectPath: string = '/') {
+  login(redirectPath: string = 'profile') {
     
     // A desired redirect path can be passed to login method
     // (e.g., from a route guard)
@@ -94,11 +94,13 @@ export class AuthService {
     console.log('hello')
     // Call when app reloads after user logs in with Auth0
     const params = window.location.search;
+    console.log(params)
     if (params.includes('code=') && params.includes('state=')) {
       let targetRoute: string; // Path to redirect to after login processsed
       const authComplete$ = this.handleRedirectCallback$.pipe(
         // Have client, now call method to handle auth callback redirect
         tap(cbRes => {
+          console.log(cbRes)
           // Get and set target redirect route from callback results
           targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
         }),
@@ -116,6 +118,9 @@ export class AuthService {
         // Redirect to target route after callback processing
         this.router.navigate([targetRoute]);
       });
+    }
+    else{
+      console.log('da paky dy')
     }
   }
 

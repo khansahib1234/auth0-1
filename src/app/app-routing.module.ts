@@ -1,9 +1,19 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from '../app/services/auth.guard';
+import { ProfilePage } from './profile/profile.page';
+import { HomePage } from './home/home.page';
 const routes: Routes = [
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' }
+  {
+    path: 'profile',
+    component: ProfilePage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '',
+    component: HomePage,
+    pathMatch: 'full'
+  }
 ];
 @NgModule({
   imports: [

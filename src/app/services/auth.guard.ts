@@ -25,6 +25,9 @@ export class AuthGuard implements CanActivate {
         if (!loggedIn) {
           this.auth.login(state.url);
         }
+        else{
+          console.log('not logged in')
+        }
       })
     );
   }

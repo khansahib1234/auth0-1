@@ -12,9 +12,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AuthService } from './services/auth.service';
+import { ProfilePage } from './profile/profile.page';
+import { HomePage } from './home/home.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  
+  declarations: [AppComponent,
+  ProfilePage,
+  HomePage
+  
+  ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule],
   providers: [
